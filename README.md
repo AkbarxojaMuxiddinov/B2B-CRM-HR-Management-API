@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/teamflow-cover.svg" alt="TEAMFLOW — платформа управления командой" width="100%">
+  <img src="assets/cover.svg" alt="B2B CRM и HR Management API" width="100%">
   <br>
   <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/Django-REST-0C4B33?style=for-the-badge&logo=django&logoColor=white" alt="Django REST">
@@ -8,7 +8,7 @@
   <p><strong>Люди, смены и выплаты — в одном управляемом потоке.</strong></p>
 </div>
 
-TEAMFLOW — REST API для B2B-команд: сотрудники и отделы, ежедневная посещаемость, роли доступа и ежемесячный расчёт выплат. Инфраструктура для локального запуска собирается через Docker Compose.
+Этот репозиторий содержит REST API для B2B-команд: сотрудники и отделы, ежедневная посещаемость, роли доступа и ежемесячный расчёт выплат. Инфраструктура для локального запуска собирается через Docker Compose.
 
 ## Карта системы
 

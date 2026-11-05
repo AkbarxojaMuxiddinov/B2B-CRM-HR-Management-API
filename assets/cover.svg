@@ -39,8 +39,9 @@
   <rect x="1055" y="220" width="78" height="5" rx="2.5" fill="#DCE7F7" fill-opacity=".84"/>
   <rect x="1055" y="232" width="55" height="4" rx="2" fill="#8290AA"/>
   <text x="76" y="83" fill="#75F2DE" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="4">PEOPLE OPERATIONS / B2B</text>
-  <text x="72" y="169" fill="#F6F8FF" font-family="Segoe UI,Arial,sans-serif" font-size="70" font-weight="750" letter-spacing="-3">TEAMFLOW</text>
-  <text x="76" y="215" fill="#B8C5DB" font-family="Segoe UI,Arial,sans-serif" font-size="23">Управление командой — в одном потоке.</text>
+  <text x="72" y="155" fill="#F6F8FF" font-family="Segoe UI,Arial,sans-serif" font-size="64" font-weight="750" letter-spacing="-3">B2B CRM</text>
+  <text x="76" y="205" fill="#F6F8FF" font-family="Segoe UI,Arial,sans-serif" font-size="40" font-weight="700" letter-spacing="-1">HR MANAGEMENT API</text>
+  <text x="76" y="243" fill="#B8C5DB" font-family="Segoe UI,Arial,sans-serif" font-size="19">Сотрудники, посещаемость и выплаты.</text>
   <rect x="76" y="260" width="118" height="3" rx="1.5" fill="url(#aqua)"/>
   <text x="76" y="294" fill="#7F8CA5" font-family="Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="1.6">HR  ·  ATTENDANCE  ·  PAYROLL  ·  ACCESS</text>
 </svg>
