@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="40" y1="30" x2="1160" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1020"/>
+      <stop offset="1" stop-color="#111B35"/>
+    </linearGradient>
+    <linearGradient id="aqua" x1="650" y1="75" x2="1080" y2="290" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5EFCE8"/>
+      <stop offset="1" stop-color="#7367F0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(280 130 -110 236 1000 103)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#50E8D0" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#50E8D0" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#94A3B8" fill-opacity=".24"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="360" rx="28" fill="url(#bg)"/>
+  <rect x="684" y="0" width="516" height="360" fill="url(#dots)" opacity=".5"/>
+  <rect width="1200" height="360" rx="28" fill="url(#glow)"/>
+  <path d="M0 294C193 245 296 330 474 281C647 233 735 84 899 108C1048 130 1087 199 1200 151" stroke="url(#aqua)" stroke-opacity=".3" stroke-width="2"/>
+  <circle cx="804" cy="152" r="7" fill="#5EFCE8"/>
+  <circle cx="968" cy="112" r="7" fill="#8D82FF"/>
+  <circle cx="1086" cy="183" r="7" fill="#5EFCE8"/>
+  <rect x="808" y="124" width="154" height="74" rx="18" fill="#121D34" stroke="#5EFCE8" stroke-opacity=".5"/>
+  <rect x="972" y="77" width="154" height="74" rx="18" fill="#121D34" stroke="#8D82FF" stroke-opacity=".55"/>
+  <rect x="1008" y="201" width="154" height="74" rx="18" fill="#121D34" stroke="#5EFCE8" stroke-opacity=".5"/>
+  <circle cx="836" cy="151" r="12" fill="#5EFCE8" fill-opacity=".16"/>
+  <circle cx="1000" cy="104" r="12" fill="#8D82FF" fill-opacity=".2"/>
+  <circle cx="1036" cy="228" r="12" fill="#5EFCE8" fill-opacity=".16"/>
+  <path d="M832 151h8m-4-4v8" stroke="#5EFCE8" stroke-width="2" stroke-linecap="round"/>
+  <path d="M996 104h8m-4-4v8" stroke="#B6AFFF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M1032 228h8m-4-4v8" stroke="#5EFCE8" stroke-width="2" stroke-linecap="round"/>
+  <rect x="855" y="143" width="72" height="5" rx="2.5" fill="#DCE7F7" fill-opacity=".84"/>
+  <rect x="855" y="155" width="48" height="4" rx="2" fill="#8290AA"/>
+  <rect x="1019" y="96" width="74" height="5" rx="2.5" fill="#DCE7F7" fill-opacity=".84"/>
+  <rect x="1019" y="108" width="52" height="4" rx="2" fill="#8290AA"/>
+  <rect x="1055" y="220" width="78" height="5" rx="2.5" fill="#DCE7F7" fill-opacity=".84"/>
+  <rect x="1055" y="232" width="55" height="4" rx="2" fill="#8290AA"/>
+  <text x="76" y="83" fill="#75F2DE" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="4">PEOPLE OPERATIONS / B2B</text>
+  <text x="72" y="169" fill="#F6F8FF" font-family="Segoe UI,Arial,sans-serif" font-size="70" font-weight="750" letter-spacing="-3">TEAMFLOW</text>
+  <text x="76" y="215" fill="#B8C5DB" font-family="Segoe UI,Arial,sans-serif" font-size="23">Управление командой — в одном потоке.</text>
+  <rect x="76" y="260" width="118" height="3" rx="1.5" fill="url(#aqua)"/>
+  <text x="76" y="294" fill="#7F8CA5" font-family="Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="1.6">HR  ·  ATTENDANCE  ·  PAYROLL  ·  ACCESS</text>
+</svg>

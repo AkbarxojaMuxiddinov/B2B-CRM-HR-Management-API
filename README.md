@@ -1,33 +1,76 @@
-# B2B CRM va HR Management API
+<div align="center">
+  <img src="assets/teamflow-cover.svg" alt="TEAMFLOW — платформа управления командой" width="100%">
+  <br>
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Django-REST-0C4B33?style=for-the-badge&logo=django&logoColor=white" alt="Django REST">
+  <img src="https://img.shields.io/badge/PostgreSQL-data-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Celery-background-37814A?style=for-the-badge&logo=celery&logoColor=white" alt="Celery">
+  <p><strong>Люди, смены и выплаты — в одном управляемом потоке.</strong></p>
+</div>
 
-Django REST API for managing company departments, employees, attendance, and payroll. The project uses JWT authentication, role-based permissions, PostgreSQL, Redis, and Celery.
+TEAMFLOW — REST API для B2B-команд: сотрудники и отделы, ежедневная посещаемость, роли доступа и ежемесячный расчёт выплат. Инфраструктура для локального запуска собирается через Docker Compose.
 
-## Run with Docker
+## Карта системы
 
-1. Copy `.env.example` to `.env` and set a private Django secret and PostgreSQL password.
-2. Start the services:
+```mermaid
+flowchart LR
+    U[Сотрудник или HR] --> API[Django REST API]
+    API --> PG[(PostgreSQL)]
+    API --> R[(Redis)]
+    R --> W[Celery worker]
+    B[Celery Beat] --> R
+    W --> PG
+```
 
-   ```powershell
-   docker compose up --build
-   ```
+## Что умеет API
 
-The API will be available at `http://localhost:8000`. Swagger documentation is at `http://localhost:8000/api/docs/`.
+| Направление | Возможности |
+|---|---|
+| Команда | Отделы, профили, роли и основные оклады |
+| Присутствие | Check-in, check-out и отметка опоздания |
+| Выплаты | Месячный payroll с учётом рабочих дней и записей посещаемости |
+| Доступ | JWT и правила для администратора, HR и сотрудника |
+| Фоновые задачи | Celery worker и ежемесячное расписание Celery Beat |
 
-Docker Compose starts PostgreSQL, Redis, the Django web service, a Celery worker, Celery Beat, and a one-time migration service.
+## Маршруты
 
-## Main API routes
+| Метод | Путь | Назначение |
+|---|---|---|
+| `POST` | `/api/v1/auth/token/` | Получить access и refresh токены |
+| `POST` | `/api/v1/auth/token/refresh/` | Обновить access токен |
+| `GET/POST` | `/api/v1/departments/` | Получить список или создать отдел |
+| `GET/POST` | `/api/v1/users/` | Просмотреть или создать профиль |
+| `POST` | `/api/v1/attendance/check_in/` | Зафиксировать начало рабочего дня |
+| `POST` | `/api/v1/attendance/check_out/` | Зафиксировать окончание рабочего дня |
+| `GET/POST` | `/api/v1/payrolls/` | Просмотреть или создать payroll |
 
-- `POST /api/v1/auth/token/` — get access and refresh tokens.
-- `POST /api/v1/auth/token/refresh/` — refresh an access token.
-- `/api/v1/departments/` — manage departments.
-- `/api/v1/users/` — manage users.
-- `/api/v1/attendance/` — manage attendance records.
-- `POST /api/v1/attendance/check_in/` — record today's check-in.
-- `POST /api/v1/attendance/check_out/` — record today's check-out.
-- `/api/v1/payrolls/` — manage payroll records.
+Остальные операции доступны через стандартные маршруты `ModelViewSet`. Полная схема API и интерактивный Swagger: [`/api/docs/`](http://localhost:8000/api/docs/).
 
-Business API routes require a JWT access token in the `Authorization: Bearer <token>` header. Admins have full access, HR users manage company records except admin accounts, and employees can access their own records.
+Для защищённых маршрутов передавайте токен в заголовке `Authorization: Bearer <access_token>`. Сотрудник видит только собственные записи; HR управляет данными команды, но не аккаунтами администратора.
 
-## Monthly payroll task
+## Месячный payroll
 
-Celery Beat schedules payroll generation for the previous month at 00:10 on the first day of each month in the configured timezone. The task prorates monthly base salary by attended weekdays over scheduled weekdays. Weekends are excluded; public holidays are not currently configured. Existing payroll records are left unchanged.
+В первый день месяца в 00:10 по времени `Asia/Tashkent` Celery Beat запускает расчёт за предыдущий месяц. Основной оклад пропорционально умножается на долю посещённых будних дней. В расчёт рабочих дней входят понедельник–пятница, начиная с даты найма; праздничный календарь пока не подключён. Существующие записи payroll повторный запуск не перезаписывает.
+
+## Быстрый запуск
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Задайте в `.env` собственные `DJANGO_SECRET_KEY` и `POSTGRES_PASSWORD`, затем запустите:
+
+```powershell
+docker compose up --build
+```
+
+Compose поднимет Django API, PostgreSQL, Redis, Celery worker, Celery Beat и одноразовый сервис миграций. API будет доступен по адресу `http://localhost:8000`.
+
+## Проверка
+
+```powershell
+python manage.py check
+python manage.py test employees
+```
+
+В репозитории нет локальной базы, виртуального окружения и файла `.env`; настройки для Docker берутся из переменных окружения.
